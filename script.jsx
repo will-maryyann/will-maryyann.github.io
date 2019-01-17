@@ -171,10 +171,10 @@ class Home extends React.Component {
         <a-image {...polarToCart(-81, 100)} src ="#rsvp" width="13" height = "9" 
         event-set__enter = "_event: mouseenter; color: #DD78B8" 
         event-set__leave = "_event: mouseleave; color: white"
-        onClick={() => { window.location = "https://goo.gl/forms/VyNIZGO1r19q2tpS2"; }}/>
+        onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
         }
       {first_view ? null: 
-        <Text {...polarToCart(-81, 95)} value = "Reply By: 2.10.2019" width = "25" align = "center" color = "white"/>
+        <Text {...polarToCart(-81, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>
       }
       
       <a-image src = "#singleCow" {...polarToCart(0, 85, rad+3)} width="10" height="10" material = "opacity:0.5" ></a-image>
@@ -202,14 +202,14 @@ let Schedule = () => {
       <Text {...polarToCart(-90, 67)} value="Schedule" width="200" align="center" color="pink" />
     
       <Image name="house" {...polarToCart(-40, 80)} color = "#D166FF" width="17" height="17" href="/" />
-      <Image name="cat" {...polarToCart(100, 100,rad+10)} color = "#00FFDF" width="20" height="20" href="/dress" />
+      <Image name="cat" {...polarToCart(240, 115,rad+10)} color = "#00FFDF" width="18" height="18" href="/dress" />
       <Image name="car" {...polarToCart(200, 100)} color = "#FFBF00" width="23" height="23" href="/hotels" />
     
-    <Text {...polarToCart(-125, 95)} value = "Reply By: 2.10.2019" width = "25" align = "center" color = "white"/>  
+    <Text {...polarToCart(-125, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>  
     <a-image {...polarToCart(-125, 100)} src ="#rsvp" width="11" height = "7" 
         event-set__enter = "_event: mouseenter; color: #DD78B8" 
         event-set__leave = "_event: mouseleave; color: white"
-        onClick={() => { window.location = "https://goo.gl/forms/VyNIZGO1r19q2tpS2"; }}/>
+        onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
     
     <a-image src = "#sign2" {...polarToCart(-60, 100)} width="13" height="13" ></a-image>
     
@@ -220,9 +220,7 @@ let Schedule = () => {
     
       <a-entity  {...polarToCart(-90, 77, rad+15)} geometry="primitive: plane; width: 55; height: 20" material="shader:flat; opacity: .3; color: #FFF6F6" />
       <Text {...polarToCart(-90, 80,rad+1)} noGeom={true} value={
-        `4:00-5:00pm - Guests arrive 
-5:00-5:30pm - Ceremony  
-5:30-7:30pm - Reception`
+        `Details TBD`
 } width="60" align="center" color="black" baseline="center" />
       
     
@@ -254,38 +252,44 @@ let Hotels = () => {
         <Image name="cat" color = "#00FFDF" {...polarToCart(-40, 90)} width="20" height="20" href="/dress" />
       </a-entity>
     
-    <Text {...polarToCart(-112, 92)} value = "Reply By: 2.10.2019" width = "25" align = "center" color = "white"/>  
+    <Text {...polarToCart(-112, 92)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>  
     <a-image {...polarToCart(-112, 97)} src ="#rsvp" width="11" height = "7" 
         event-set__enter = "_event: mouseenter; color: #DD78B8" 
         event-set__leave = "_event: mouseleave; color: white"
-        onClick={() => { window.location = "https://goo.gl/forms/VyNIZGO1r19q2tpS2"; }}/>
+        onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
     
     
     <a-image src = "#stars" {...polarToCart(8, 90)}  width="15" height="15"></a-image>
     <a-image src = "#stars" {...polarToCart(130, 100)}  width="15" height="15"></a-image>
     <a-image src = "#stars" {...polarToCart(80, 95)} width="25" height="25"></a-image>
     
-    <a-entity  {...polarToCart(-90, 70, rad+7)} geometry="primitive: plane; width: 50; height: 23" material="opacity: 0.5; color: white" />
-    <Text {...polarToCart(-90, 63)} value={"Accomodations: TBD"} width="60" align="center" color="white"/>
-    <Text {...polarToCart(-90, 70, rad+2)} geomWidth = "20" geomHeight = "3" value={"Hampton Inn"} width="65" align="center" color="white" onClick={() => {
+    <a-entity  {...polarToCart(-90, 71, rad+7)} geometry="primitive: plane; width: 50; height: 24" material="opacity: 0.5; color: white" />
+    <Text {...polarToCart(-90, 63.2)} value={"Accomodations: TBD"} width="50" align="center" color="white"/>
+    <Text {...polarToCart(-90, 67, rad+2)} value={"Closest city is Covington, GA"} width="40" align="center" color="white"/>
+    <Text {...polarToCart(-90, 71, rad+3)} geomWidth = "20" geomHeight = "3" value={"Hampton Inn"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://hamptoninn3.hilton.com/en/hotels/georgia/hampton-inn-covington-ATLCVHX/index.html'
       }}
       event-set__enter = "_event: mouseenter; color: #DD78B8" 
       event-set__leave = "_event: mouseleave; color: white"
       />
-    <Text {...polarToCart(-90, 75, rad +1)} geomWidth = "20" geomHeight = "3" value={"La Quinta"} width="65" align="center" color="white" onClick={() => {
+    <Text {...polarToCart(-90, 75, rad +2)} geomWidth = "20" geomHeight = "3" value={"La Quinta"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://www.lq.com/en/hotels/louisiana/covington/0866'
       }} 
       event-set__enter = "_event: mouseenter; color: #DD78B8" 
       event-set__leave = "_event: mouseleave; color: white"
       />
-    <Text {...polarToCart(-90, 80)} geomWidth = "20" geomHeight = "3" value={"Travelodge"} width="65" align="center" color="white" onClick={() => {
+    <Text {...polarToCart(-90, 79, rad+1)} geomWidth = "20" geomHeight = "3" value={"Travelodge"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://www.wyndhamhotels.com/travelodge/covington-georgia/travelodge-covington/overview'
       }} 
       event-set__enter = "_event: mouseenter; color: #DD78B8" 
       event-set__leave = "_event: mouseleave; color: white"
       />
-    <a-image src = "#click" {...polarToCart(-73, 74)} width="20" height="20"  color = "white" />
+    <Text {...polarToCart(-90, 83 )} geomWidth = "20" geomHeight = "2" value={"Airbnb"} width="50" align="center" color="white" onClick={() => {
+        window.location = 'https://www.airbnb.com/s/Rutledge--GA'}}
+      event-set__enter = "_event: mouseenter; color: #DD78B8" 
+      event-set__leave = "_event: mouseleave; color: white"
+      />
+    <a-image src = "#click" {...polarToCart(-73, 74)} width="16" height="16"  color = "#D166FF" />
     <a-image src = "#sign3" {...polarToCart(-145, 110, rad+10)} width="9" height="9" ></a-image>
     
    </a-entity>
@@ -308,22 +312,22 @@ let Dress = () => {
         <Image name="car" color = "#FFBF00" {...polarToCart(18, 98)} width="21" height="21" href="/hotels" />
     </a-entity>  
     
-    <Text {...polarToCart(-105, 95)} value = "Reply By: 2.10.2019" width = "25" align = "center" color = "white"/>  
+    <Text {...polarToCart(-105, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>  
     <a-image {...polarToCart(-105, 100)} src ="#rsvp" width="11" height = "7" 
         event-set__enter = "_event: mouseenter; color: #DD78B8" 
         event-set__leave = "_event: mouseleave; color: white"
-        onClick={() => { window.location = "https://goo.gl/forms/VyNIZGO1r19q2tpS2"; }}/>
+        onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
   
     
-    <a-entity  {...polarToCart(-90, 73.5, rad+3, 20)} geometry="primitive: plane; width: 44; height: 27" material="shader:flat; opacity: .5; color: #FFF6F6" />
+    <a-entity  {...polarToCart(-90, 75, rad+3, 20)} geometry="primitive: plane; width: 44; height: 29" material="shader:flat; opacity: .5; color: #FFF6F6" />
     <Text {...polarToCart(-90, 65, rad+3, 20)} noGeom={true} value={
-          `Expected Weather: TBD
+          `Expected Weather: mid 80's. Details TBD
 
 Wedding will be outdoors.
 Dress code is semi-formal, but comfortable. 
 
 Please try and avoid bright/rich purples, super bold colors, or ivory/silver as to not 
-clash with the wedding colors. \
+clash with the wedding colors. If you have attire questions, feel free to email us.\
 `
       } width="35" align="center" color="black" wrapCount="80" />
     <a-entity rotation = "35 0 0" >
@@ -370,8 +374,49 @@ class Application extends React.Component {
     return <ReactRouterDOM.HashRouter>
       {AFRAME.utils.device.isMobile()
         ? <div>
-          <img src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FLogo.png?1546490561847" style={{width: "100%", filter: "invert(100%)", margin: "auto"}} />
-          <p style={{textAlign: "center", fontSize: "20px"}}>Please visit this page on your laptop or desktop for the proper experience.</p>
+          <div id="logoBox">
+            <img src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FLogo.png?1546490561847" style={{width: "100%", margin: "auto"}} />
+            <p style={{textAlign: "center", fontSize: "14px"}}>Please visit this page on your laptop or desktop for the proper experience.</p>
+            </div>
+          <div id = "flowerBackground">
+          <div id = "mobileCanvas" style={{fontFamily: "'Patrick Hand', serif"}}>
+            <p style={{fontWeight: "bold", fontSize: "55px", fontVariant:"small-caps", margin: "0", color: "#FFBF00", lineHeight: '1em', marginBottom: '10px'}}>Save the Date! </p>
+            <p style = {{margin: "0" }}>Please reply by 2.20.19</p>
+            <a href = "https://goo.gl/forms/VyNIZGO1r19q2tpS2" target="_blank">
+              <img height = "50px" src = "https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2Frsvp.png?1547019481778"></img>
+            </a>
+            
+            <p style={{fontSize: "22px", margin: "0", marginTop: "10px"}}>When: September 1, 2019</p>
+            <p style={{fontSize: "22px", margin: "0" }}>Where: Rutledge, Georgia</p>
+            <br></br>
+            <p style={{fontWeight: "bold", fontSize: "27px", fontVariant:"small-caps", margin: "0", textDecoration: "underline"}} >Wedding Schedule </p>
+            <p>Details TBD</p>
+            <br></br>
+            <p style={{fontWeight: "bold", fontSize: "27px", fontVariant:"small-caps", margin: "0", textDecoration: "underline"}}>Attire</p>
+            <p>Expected Weather: mid 80's. Details TBD</p>
+            <p>Semi-formal clothing, but comfortable. Wedding will be outdoors on the grass.
+
+            </p>
+            <p>Please try and avoid bright/rich purples, super bold colors, or ivory/silver 
+              as to not clash with the wedding colors. </p>
+            <p> If you have questions about what to wear, 
+feel free to email us. </p>
+            <br></br>
+            <p style={{fontWeight: "bold", fontSize: "27px", fontVariant:"small-caps", margin: "0", textDecoration: "underline"}}>Hotels</p>
+            <p> Accomodations: TBD </p>
+            <p> Closest city is Covington,GA</p>
+            <a href = 'https://hamptoninn3.hilton.com/en/hotels/georgia/hampton-inn-covington-ATLCVHX/index.html' target= "_blank" style = {{textDecoration: "none"}}><p  style = {{margin: "0", fontWeight: "bold", color: "#a0778a"}}>Hampton Inn</p></a> 
+            <a href = 'https://www.lq.com/en/hotels/louisiana/covington/0866' target= "_blank"style = {{textDecoration: "none"}}><p style = {{margin: "0", marginTop: "3px", fontWeight: "bold", color: "#a0778a" }}>La Quinta</p></a>
+            <a href = 'https://www.wyndhamhotels.com/travelodge/covington-georgia/travelodge-covington/overview' target= "_blank" style = {{textDecoration: "none"}}><p style = {{margin: "0", marginTop: "3px", fontWeight: "bold", color: "#a0778a" }}>Travelodge</p></a>
+            <a href = "https://www.airbnb.com/s/Rutledge--GA" target= "_blank" style = {{textDecoration: "none"}}><p style = {{margin: "0", marginTop: "3px", fontWeight: "bold", color: "#a0778a" }}>Airbnb</p></a>
+            <br></br>
+            <p style={{fontWeight: "bold", fontSize: "27px", fontVariant:"small-caps", margin: "0", textDecoration: "underline"}}>Questions?</p>
+            <p style = {{marginBottom:"0"}}>mlandlor@gmail.com</p>
+            <p style = {{marginTop:"0"}}>crichton.will@gmail.com</p>
+            <br></br>
+            
+          </div>
+          </div>
         </div>
         : <a-scene cursor="rayOrigin: mouse">
 

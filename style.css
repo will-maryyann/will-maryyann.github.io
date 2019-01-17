@@ -3,8 +3,9 @@
 
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+  margin: 0;
   }
+
 
 
 h1 {
@@ -22,40 +23,38 @@ h1 {
 }
 */
 
-#arrow_right{
-  position: absolute; 
-  bottom: 50%; 
-  right: 0; 
-  height: 45px;
-  z-index: 100;
-  padding-right: 13px; 
-  padding-bottom: 10px; 
-  opacity: 0;
-  /*animation: blinkRight 2s ease-in-out infinite;*/ 
-}
 
-@keyframes blinkRight {
-  50%{
-    opacity: 100; 
-    transform: translate(10px, 0);
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #a0778a;
+    color: #FCF6FF;  
+  
   }
-}
+  
+  #logoBox {
+    margin: 20px;
+  }
 
-#arrow_left{
-  position: absolute; 
-  bottom: 50%; 
-  left: 0; 
-  height: 45px;  
-  z-index: 100;
-  padding-left: 13px; 
-  padding-bottom: 10px; 
-  opacity: 0;
-  /*animation: blinkLeft 2s ease-in-out infinite; */
-}
+  
+  #mobileCanvas{
+      margin: 2em;
+      padding-top:10px;
+      padding-left: 15px; 
+      padding-right: 15px; 
 
-@keyframes blinkLeft {
-  50%{
-    opacity: 100; 
-    transform: translate(-10px, 0);
+      height: 100%;
+      text-align: center; 
+      background-color: #FCF6FF; 
+      border-radius: 15px; 
+      color: black; 
+
+      font-size: 18px; 
+  }
+  
+  #flowerBackground {
+    background: url('https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2Fflower2.png?1547707106835');
+    background-size: 40px 40px;
+    padding-bottom: 30px;
   }
 }
