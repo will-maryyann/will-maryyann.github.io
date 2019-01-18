@@ -21,7 +21,7 @@ let skies = {
     path: "https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2Fpurple.jpg?1546581967074",
     rotation: "0 0 0"
   }
-}         
+}
 let rad = 50;
 let polarToCart = (azi, rot, rad2, lookAt) => {
   rad2 = rad2 || rad;
@@ -30,7 +30,7 @@ let polarToCart = (azi, rot, rad2, lookAt) => {
   let x = rad2 * Math.sin(rot * factor) * Math.cos(azi * factor);
   let y = rad2 * Math.sin(rot * factor) * Math.sin(azi * factor);
   let z = rad2 * Math.cos(rot * factor);
-  
+
   return {
     position: `${x} ${z} ${y}`,
     "look-at": `0 ${lookAt} 0`
@@ -55,14 +55,14 @@ class Text extends React.Component {
     super(props);
     this.el = React.createRef();
   }
-  
+
   componentDidMount() {
     this.el.current._onClick = this.props.onClick;
   }
 
   render() {
-    return <a-text ref={this.el} 
-             text-click 
+    return <a-text ref={this.el}
+             text-click
              font={this.props.font || fonts.patrickhand}
              shader='msdf'
              geometry={this.props.noGeom ? '' : `primitive:plane; width:${this.props.geomWidth || 50}; height:${this.props.geomHeight || 3}` }
@@ -82,7 +82,7 @@ class Image extends React.Component {
     super(props);
     this.el = React.createRef();
   }
-  
+
   componentDidMount() {
     this.el.current._onClick = this.props.onClick;
     this._interval = setInterval(() => {
@@ -95,21 +95,21 @@ class Image extends React.Component {
     let sequence = [1, 2, 3, 2];
     let frame = MOBILE ? 0 : this.state.frame;
     let url = `#${name}${sequence[frame]}`;
-    
+
     let hoverEvent = {
       'event-set__down': "_event: mousedown; color: #A4377C",
       'event-set__enter': "_event: mouseenter; color: #DD78B8",
       'event-set__leave': `_event: mouseleave; color: ${this.props.color || 'white'}`
     }
 
-    return <a-image ref={this.el} text-click {...this.props} {...hoverEvent} src={url} onClick={() => {        
+    return <a-image ref={this.el} text-click {...this.props} {...hoverEvent} src={url} onClick={() => {
         if (!MOBILE) {
           let el = document.getElementById('cameraWrapper');
           let camRot = el.querySelector('[camera]').getAttribute('rotation');
           el.setAttribute('rotation', {
             y: -1 * camRot.y})
         }
-        
+
         window.location = `/#${this.props.href}`;
       }} ></a-image>;
   }
@@ -142,21 +142,21 @@ class Home extends React.Component {
         <Sky id = "purpleSky" radius = {rad+10} skyName = "purple" material = {first_view ? "opacity: 1" : "opacity: 0" }>
         <a-animation attribute="material.opacity" begin="fade" to="0" dur = "1000"></a-animation>
         </Sky> : null}
-      
+
       <Sky id = "homeSky" skyName= "path" material = "opacity:1"></Sky>
       {first_view ? null:
-        <Image name="cow" {...polarToCart(-55, 90)} color = "pink" width="15" height="15" href="/schedule" />}      
+        <Image name="cow" {...polarToCart(-55, 90)} color = "pink" width="15" height="15" href="/schedule" />}
       {first_view ? null:
         <Image name="car" {...polarToCart(-143, 100)} color = "#FFBF00" width="13" height="13" href="/hotels" />}
       {first_view ? null:
         <Image name="cat" {...polarToCart(-128, 110)} color = "#00FFDF" width="15" height="15" href="/dress" />}
-      
+
       {first_view ? null:
       <a-image src = "#click" color = "#D166FF" {...polarToCart(-43, 85, rad+3)} width="10" height="10"></a-image>}
       {first_view ? null:
       <a-image src = "#click" color = "#D166FF" {...polarToCart(-130, 97, rad+3)} width="12" height="12"></a-image>}
-      
-   
+
+
 
       <a-image {...polarToCart(-90, 70)} src="#logo" width="60" height="40"></a-image>
       {first_view ?
@@ -164,19 +164,19 @@ class Home extends React.Component {
           <a-animation attribute="material.opacity" begin="fade" to="0" dur = "1000"></a-animation>
         </a-image> : null}
 
-      
+
       <Text {...polarToCart(25, 60, rad+10)} value= "Save the Date!" width="150" align="center" color="#D166FF" font={fonts.dancingscript} />
       <Text {...polarToCart(25, 67,rad+15)} value="When: September 1, 2019\nWhere: Rutledge, Georgia" color="white" width="80" align="center" />
-      {first_view ? null: 
-        <a-image {...polarToCart(-81, 100)} src ="#rsvp" width="13" height = "9" 
-        event-set__enter = "_event: mouseenter; color: #DD78B8" 
+      {first_view ? null:
+        <a-image {...polarToCart(-81, 100)} src ="#rsvp" width="13" height = "9"
+        event-set__enter = "_event: mouseenter; color: #DD78B8"
         event-set__leave = "_event: mouseleave; color: white"
         onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
         }
-      {first_view ? null: 
+      {first_view ? null:
         <Text {...polarToCart(-81, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>
       }
-      
+
       <a-image src = "#singleCow" {...polarToCart(0, 85, rad+3)} width="10" height="10" material = "opacity:0.5" ></a-image>
       <a-image src = "#singleCow" {...polarToCart(0, 90, rad)} scale = "-1 1 1" width="15" height="15"></a-image>
       <a-image src = "#singleCow" {...polarToCart(20, 87, rad-2)} scale = "-.7 1 1" width="12" height="12"material = "opacity:0.7"></a-image>
@@ -185,51 +185,51 @@ class Home extends React.Component {
       <a-image src = "#singleCow" {...polarToCart(100, 93, rad)} width="15" height="15"></a-image>
       <a-image src = "#singleCow" {...polarToCart(135, 93, rad+2)} scale = "-1 1 1" width="10" height="10" material = "opacity: 0.7"></a-image>
       <a-image src = "#singleCow" {...polarToCart(144, 95, rad)} scale = "-1 1 1" width="12" height="12" material = "opacity: 0.8"></a-image>
-      
-      {first_view ? null: 
+
+      {first_view ? null:
         <a-image src = "#sign1" {...polarToCart(-35, 105)} width="9" height="9" ></a-image>}
-    
-       {first_view ? null:  
+
+       {first_view ? null:
         <a-image src = "#locSign" {...polarToCart(-38, 92)} width="11" height="11" ></a-image>}
-      
+
     </a-entity>
   }
 }
-  
+
 let Schedule = () => {
   return <a-entity>
       <Sky skyName="cow" />
       <Text {...polarToCart(-90, 67)} value="Schedule" width="200" align="center" color="pink" />
-    
+
       <Image name="house" {...polarToCart(-40, 80)} color = "#D166FF" width="17" height="17" href="/" />
       <Image name="cat" {...polarToCart(240, 115,rad+10)} color = "#00FFDF" width="18" height="18" href="/dress" />
       <Image name="car" {...polarToCart(200, 100)} color = "#FFBF00" width="23" height="23" href="/hotels" />
-    
-    <Text {...polarToCart(-125, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>  
-    <a-image {...polarToCart(-125, 100)} src ="#rsvp" width="11" height = "7" 
-        event-set__enter = "_event: mouseenter; color: #DD78B8" 
+
+    <Text {...polarToCart(-125, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>
+    <a-image {...polarToCart(-125, 100)} src ="#rsvp" width="11" height = "7"
+        event-set__enter = "_event: mouseenter; color: #DD78B8"
         event-set__leave = "_event: mouseleave; color: white"
         onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
-    
+
     <a-image src = "#sign2" {...polarToCart(-60, 100)} width="13" height="13" ></a-image>
-    
+
       <a-image src = "#singleCow" {...polarToCart(20, 93, rad-2)} scale = "-.7 1 1" width="12" height="12"material = "opacity:0.7"></a-image>
       <a-image src = "#singleCow" {...polarToCart(50, 100, rad-2)} scale = "1 1 1" width="13" height="13"></a-image>
       <a-image src = "#singleCow" {...polarToCart(165, 97, rad)} scale = "-1 1 1" width="10" height="10" material = "opacity:0.7" ></a-image>
-    
-    
+
+
       <a-entity  {...polarToCart(-90, 77, rad+15)} geometry="primitive: plane; width: 55; height: 20" material="shader:flat; opacity: .3; color: #FFF6F6" />
       <Text {...polarToCart(-90, 80,rad+1)} noGeom={true} value={
         `Details TBD`
 } width="60" align="center" color="black" baseline="center" />
-      
-    
+
+
       <a-entity  {...polarToCart(230, 82, rad+15)} geometry="primitive: plane; width: 23; height: 10" material="shader:flat; opacity: .3; color: #FFF6F6" />
       <Text {...polarToCart(230, 84,rad+10)} noGeom={true} value={
           `Updates: TBD!`
       } width="60" align="center" color="black" />
       <Text {...polarToCart(230, 75,rad+15)} value="Gifts" color = "pink" width="130" align="center"  />
-    
+
   </a-entity>
 }
 
@@ -247,51 +247,51 @@ let Hotels = () => {
       <a-entity rotation = "11 0 0 ">
          <Image name="cow" color = "pink" {...polarToCart(183, 87)} width="17" height="17" href="/schedule" />
       </a-entity>
-      
+
       <a-entity rotation = "15 0 0">
         <Image name="cat" color = "#00FFDF" {...polarToCart(-40, 90)} width="20" height="20" href="/dress" />
       </a-entity>
-    
-    <Text {...polarToCart(-112, 92)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>  
-    <a-image {...polarToCart(-112, 97)} src ="#rsvp" width="11" height = "7" 
-        event-set__enter = "_event: mouseenter; color: #DD78B8" 
+
+    <Text {...polarToCart(-112, 92)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>
+    <a-image {...polarToCart(-112, 97)} src ="#rsvp" width="11" height = "7"
+        event-set__enter = "_event: mouseenter; color: #DD78B8"
         event-set__leave = "_event: mouseleave; color: white"
         onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
-    
-    
+
+
     <a-image src = "#stars" {...polarToCart(8, 90)}  width="15" height="15"></a-image>
     <a-image src = "#stars" {...polarToCart(130, 100)}  width="15" height="15"></a-image>
     <a-image src = "#stars" {...polarToCart(80, 95)} width="25" height="25"></a-image>
-    
+
     <a-entity  {...polarToCart(-90, 71, rad+7)} geometry="primitive: plane; width: 50; height: 24" material="opacity: 0.5; color: white" />
-    <Text {...polarToCart(-90, 63.2)} value={"Accomodations: TBD"} width="50" align="center" color="white"/>
+    <Text {...polarToCart(-90, 63.2)} value={"Accommodations: TBD"} width="50" align="center" color="white"/>
     <Text {...polarToCart(-90, 67, rad+2)} value={"Closest city is Covington, GA"} width="40" align="center" color="white"/>
     <Text {...polarToCart(-90, 71, rad+3)} geomWidth = "20" geomHeight = "3" value={"Hampton Inn"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://hamptoninn3.hilton.com/en/hotels/georgia/hampton-inn-covington-ATLCVHX/index.html'
       }}
-      event-set__enter = "_event: mouseenter; color: #DD78B8" 
+      event-set__enter = "_event: mouseenter; color: #DD78B8"
       event-set__leave = "_event: mouseleave; color: white"
       />
     <Text {...polarToCart(-90, 75, rad +2)} geomWidth = "20" geomHeight = "3" value={"La Quinta"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://www.lq.com/en/hotels/louisiana/covington/0866'
-      }} 
-      event-set__enter = "_event: mouseenter; color: #DD78B8" 
+      }}
+      event-set__enter = "_event: mouseenter; color: #DD78B8"
       event-set__leave = "_event: mouseleave; color: white"
       />
     <Text {...polarToCart(-90, 79, rad+1)} geomWidth = "20" geomHeight = "3" value={"Travelodge"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://www.wyndhamhotels.com/travelodge/covington-georgia/travelodge-covington/overview'
-      }} 
-      event-set__enter = "_event: mouseenter; color: #DD78B8" 
+      }}
+      event-set__enter = "_event: mouseenter; color: #DD78B8"
       event-set__leave = "_event: mouseleave; color: white"
       />
     <Text {...polarToCart(-90, 83 )} geomWidth = "20" geomHeight = "2" value={"Airbnb"} width="50" align="center" color="white" onClick={() => {
         window.location = 'https://www.airbnb.com/s/Rutledge--GA'}}
-      event-set__enter = "_event: mouseenter; color: #DD78B8" 
+      event-set__enter = "_event: mouseenter; color: #DD78B8"
       event-set__leave = "_event: mouseleave; color: white"
       />
     <a-image src = "#click" {...polarToCart(-73, 74)} width="16" height="16"  color = "#D166FF" />
     <a-image src = "#sign3" {...polarToCart(-145, 110, rad+10)} width="9" height="9" ></a-image>
-    
+
    </a-entity>
 }
 
@@ -299,43 +299,43 @@ let Dress = () => {
   return <a-entity>
     <Sky skyName="farm" />
     <Text {...polarToCart(-90, 60, rad+10)} value="Attire" width="130" align="center" color = "#00FFDF" />
-    
-    
+
+
     <a-entity rotation = "50 0 0" >
       <Image name="house" color = "#D166FF"  {...polarToCart(-50, 115, rad+5)} width="18" height="18" href="/" />
     </a-entity>
-  
+
     <a-entity rotation = "30 -18 -18">
       <Image name="cow"  color = "pink" {...polarToCart(160, 127)} width="30" height="30" href="/schedule" />
-    </a-entity>  
+    </a-entity>
     <a-entity rotation = "40 0 0">
         <Image name="car" color = "#FFBF00" {...polarToCart(18, 98)} width="21" height="21" href="/hotels" />
-    </a-entity>  
-    
-    <Text {...polarToCart(-105, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>  
-    <a-image {...polarToCart(-105, 100)} src ="#rsvp" width="11" height = "7" 
-        event-set__enter = "_event: mouseenter; color: #DD78B8" 
+    </a-entity>
+
+    <Text {...polarToCart(-105, 95)} value = "Reply By: 2.20.2019" width = "25" align = "center" color = "white"/>
+    <a-image {...polarToCart(-105, 100)} src ="#rsvp" width="11" height = "7"
+        event-set__enter = "_event: mouseenter; color: #DD78B8"
         event-set__leave = "_event: mouseleave; color: white"
         onClick={() => { window.open("https://goo.gl/forms/VyNIZGO1r19q2tpS2", '_blank'); }}/>
-  
-    
+
+
     <a-entity  {...polarToCart(-90, 75, rad+3, 20)} geometry="primitive: plane; width: 44; height: 29" material="shader:flat; opacity: .5; color: #FFF6F6" />
     <Text {...polarToCart(-90, 65, rad+3, 20)} noGeom={true} value={
           `Expected Weather: mid 80's. Details TBD
 
 Wedding will be outdoors.
-Dress code is semi-formal, but comfortable. 
+Dress code is semi-formal, but comfortable.
 
-Please try and avoid bright/rich purples, super bold colors, or ivory/silver as to not 
+Please try and avoid bright/rich purples, super bold colors, or ivory/silver as to not
 clash with the wedding colors. If you have attire questions, feel free to email us.\
 `
       } width="35" align="center" color="black" wrapCount="80" />
     <a-entity rotation = "35 0 0" >
-    <a-image src = "#sign3" {...polarToCart(-140, 110, rad)} width="12" height="12" ></a-image>  
+    <a-image src = "#sign3" {...polarToCart(-140, 110, rad)} width="12" height="12" ></a-image>
     </a-entity>
-   
-    
-  </a-entity>        
+
+
+  </a-entity>
 }
 
 let RSVP = () => {
@@ -346,7 +346,7 @@ class Application extends React.Component {
     sky: 0
   }
 
-  componentDidMount() {    
+  componentDidMount() {
     AFRAME.registerComponent('text-click', {
       init: function() {
         this.el.addEventListener('click', (function() {
@@ -356,7 +356,7 @@ class Application extends React.Component {
         }).bind(this));
       }
     });
-    
+
     //document.querySelector('a-scene').renderer.vr.enabled = false;
     //document.querySelector('a-camera').object3D.resetPerspectiveCamera();
   }
@@ -368,9 +368,9 @@ class Application extends React.Component {
 // <img id="cowpic" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCow1.2.png?1546226445276" />
 //           <img id="housepic" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FHouse1.2.png?1546384900761" />
 //           <img id="carpic" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCar1.1.png?1546385282942" />
-//           <img id="catpic" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCat1.png?1546384900179" />     
+//           <img id="catpic" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCat1.png?1546384900179" />
 //          {_.map(skies, (v, k) => <img key={k} id={k} crossOrigin="anonymous" src={v.path} />)}
-    
+
     return <ReactRouterDOM.HashRouter>
       {AFRAME.utils.device.isMobile()
         ? <div>
@@ -385,7 +385,7 @@ class Application extends React.Component {
             <a href = "https://goo.gl/forms/VyNIZGO1r19q2tpS2" target="_blank">
               <img height = "50px" src = "https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2Frsvp.png?1547019481778"></img>
             </a>
-            
+
             <p style={{fontSize: "22px", margin: "0", marginTop: "10px"}}>When: September 1, 2019</p>
             <p style={{fontSize: "22px", margin: "0" }}>Where: Rutledge, Georgia</p>
             <br></br>
@@ -397,15 +397,15 @@ class Application extends React.Component {
             <p>Semi-formal clothing, but comfortable. Wedding will be outdoors on the grass.
 
             </p>
-            <p>Please try and avoid bright/rich purples, super bold colors, or ivory/silver 
+            <p>Please try and avoid bright/rich purples, super bold colors, or ivory/silver
               as to not clash with the wedding colors. </p>
-            <p> If you have questions about what to wear, 
+            <p> If you have questions about what to wear,
 feel free to email us. </p>
             <br></br>
             <p style={{fontWeight: "bold", fontSize: "27px", fontVariant:"small-caps", margin: "0", textDecoration: "underline"}}>Hotels</p>
-            <p> Accomodations: TBD </p>
+            <p> Accommodations: TBD </p>
             <p> Closest city is Covington,GA</p>
-            <a href = 'https://hamptoninn3.hilton.com/en/hotels/georgia/hampton-inn-covington-ATLCVHX/index.html' target= "_blank" style = {{textDecoration: "none"}}><p  style = {{margin: "0", fontWeight: "bold", color: "#a0778a"}}>Hampton Inn</p></a> 
+            <a href = 'https://hamptoninn3.hilton.com/en/hotels/georgia/hampton-inn-covington-ATLCVHX/index.html' target= "_blank" style = {{textDecoration: "none"}}><p  style = {{margin: "0", fontWeight: "bold", color: "#a0778a"}}>Hampton Inn</p></a>
             <a href = 'https://www.lq.com/en/hotels/louisiana/covington/0866' target= "_blank"style = {{textDecoration: "none"}}><p style = {{margin: "0", marginTop: "3px", fontWeight: "bold", color: "#a0778a" }}>La Quinta</p></a>
             <a href = 'https://www.wyndhamhotels.com/travelodge/covington-georgia/travelodge-covington/overview' target= "_blank" style = {{textDecoration: "none"}}><p style = {{margin: "0", marginTop: "3px", fontWeight: "bold", color: "#a0778a" }}>Travelodge</p></a>
             <a href = "https://www.airbnb.com/s/Rutledge--GA" target= "_blank" style = {{textDecoration: "none"}}><p style = {{margin: "0", marginTop: "3px", fontWeight: "bold", color: "#a0778a" }}>Airbnb</p></a>
@@ -414,7 +414,7 @@ feel free to email us. </p>
             <p style = {{marginBottom:"0"}}>mlandlor@gmail.com</p>
             <p style = {{marginTop:"0"}}>crichton.will@gmail.com</p>
             <br></br>
-            
+
           </div>
           </div>
         </div>
@@ -424,7 +424,7 @@ feel free to email us. </p>
             <img id="cow1" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCow-1.png?1547019480646" />
             <img id="cow2" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCow-2.png?1547019480805" />
             <img id="cow3" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCow-3.png?1547019481057" />
-            
+
             <img id = "singleCow" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCow1.2.png?1546226445276"/>
 
             <img id="cat1" crossOrigin="anonymous" src="https://cdn.glitch.com/d6ceb430-fa89-401d-811c-bc27ad01ce99%2FCat-1.png?1547019480031" />
@@ -470,44 +470,44 @@ ReactDOM.render(
 /*
 
 //////////HOME//////////
- 
-Save the Date! 
-RSVP (under that ^) 
 
-text: 
-When: August 31, 2019 
-Where: Rutledge, Georgia 
+Save the Date!
+RSVP (under that ^)
+
+text:
+When: August 31, 2019
+Where: Rutledge, Georgia
 ////////////////////////
 
 /////////SCHEDULE////////
 
-Location: To be announced 
-(Need detailed directions regarding gate + drive in forest 
-up to house) 
-Caterer: To be announced 
+Location: To be announced
+(Need detailed directions regarding gate + drive in forest
+up to house)
+Caterer: To be announced
 
-Wedding Schedule  
-4:30pm - 5:00pm Guest arrival 
-5:00pm - 5:30pm Ceremony 
+Wedding Schedule
+4:30pm - 5:00pm Guest arrival
+5:00pm - 5:30pm Ceremony
 
 Dinner
-5:45pm - 7:30pm Reception 
+5:45pm - 7:30pm Reception
 
-Gifts 
+Gifts
 Hmmmmm
 
 /////////////////////////
 
 /////////HOTELS//////////
 
-Accommodations: To be accounced  
+Accommodations: To be accounced
 
-Hampton Inn (link) - Directions to house 
-La Quinta (link) - Directions to house 
-Travelodge (link) - Directions to house 
+Hampton Inn (link) - Directions to house
+La Quinta (link) - Directions to house
+Travelodge (link) - Directions to house
 
-Once responses are in, we will share a list for guests to 
-coordinate carpooling. 
+Once responses are in, we will share a list for guests to
+coordinate carpooling.
 /////////////////////////
 
 
@@ -515,13 +515,13 @@ coordinate carpooling.
 Expected Weather: ??
 General: Semi-formal clothing, but comfortable. Wedding will be outdoors on the grass.
 
-Please try and avoid bright/rich purples, super bold colors, or ivory/silver 
-as to not clash with the wedding colors. If you have questions about what to wear, 
-feel free to email Maryyann.  
+Please try and avoid bright/rich purples, super bold colors, or ivory/silver
+as to not clash with the wedding colors. If you have questions about what to wear,
+feel free to email Maryyann.
 
 
 
-mlandlor@gmail.com 
+mlandlor@gmail.com
 ///////////////////////
 
 
